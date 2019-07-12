@@ -1,0 +1,57 @@
+{% extends "pd_main/answer_base.html" %}
+
+{% load static %}
+
+{% comment %}
+
+BİR ADAM
+
+Korku dağlarının yürekçisi,
+Ölüm denizlerinin kürekçisi;
+Öyle suskun oturuyor şişesinin başında,
+İçtiğinin hem hırsızı, hem bekçisi,
+
+Onu kırmış olmalı yaşamında birisi.
+Dinledikçe susması, düşündükçe susması..
+Tek başına iki kişi olmuş kendisiyle
+gölgesi,
+Heykelini yontuyor yalnızlığın ustası.
+
+                    -- Özdemir Asaf
+
+{% endcomment %}
+
+{% block content %}
+
+    <div class="text-center">
+        <h2 class="mt-4 mb-4 text-secondary">Answer</h2>
+    </div>
+
+    <div class="form-row mt-5 mb-2">
+        <div class="form-group col-12">
+            <textarea class="form-control answer-view-textarea" id="answer-code"
+                readonly>{{ answer.code }}
+            </textarea>
+        </div>
+    </div>
+
+    <div class="form-row mb-2">
+        <div class="form-group col-12">
+            <textarea class="form-control answer-view-textarea" id="answer-explanation"
+                >{{ answer.explanation }}
+            </textarea>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-12">
+            <a class='btn btn-success btn-block' id="submit_button"
+                href="{% url 'pd-answer-send' answer.pk question.question_id %}">
+                CREATE ANSWER
+            </a>
+        </div>
+    </div>
+
+    <script src="{% static 'pd_main/js/custom/answer_view.js' %}"></script>
+
+{% endblock content %}

@@ -1,0 +1,31 @@
+{% extends "pd_main/base.html" %}
+
+{% load crispy_forms_tags %}
+
+{% comment %}
+
+GİDERAYAK
+
+Handan, hamamdan geçtik,
+Gün ışığındaki hissemize razıydık;
+Saadetinden geçtik,
+Ümidine razıydık;
+Hiçbirini bulamadık;
+Kendimize hüzünler icadettik,
+Avunamadık;
+Yoksa biz...
+Biz bu dünyadan değil miydik?
+
+            -- Orhan Veli
+
+{% endcomment %}
+
+{% block content %}
+
+<div class="container-fluid mt-4 mb-4 text-center">
+    <h2 class="text-secondary">FEEDBACK</h2>
+</div>
+
+{% crispy form %}
+
+{% endblock content %}

@@ -1,0 +1,46 @@
+{% extends "pd_main/base.html" %}
+
+{% comment %}
+
+GELİRLİ ŞİİR
+
+İstanbul'dan ayva da gelir, nar gelir,
+Döndüm baktım, bir edalı yâr gelir,
+Gelir desen dar gelir;
+Gün aşırı alacaklılar gelir.
+Anam anam,
+Dayanamam,
+Bu iş bana zor gelir.
+
+        -- Orhan Veli
+
+{% endcomment %}
+
+{% block content %}
+
+{% if questions %}
+    <div class="text-center">
+        <h2 class="mt-4 mb-4 text-secondary">{{ questions.0.questioner }}</h2>
+    </div>
+
+    {% for question in questions %}
+        <ul class="list-group list-group-horizontal mb-2">
+            <button type="button" class="btn btn-secondary">{{ forloop.counter }}</button>
+            <li class="list-group-item flex-fill">
+                <a href="{% url 'pd-question-show' question.question_id %}"
+                class="list-group-item-action">{{ question.question_id }}</a>
+            </li>
+            <li class="list-group-item flex-fill">
+                {{ question.date_submitted|date:'F j, Y' }} -
+                {{ question.date_submitted|time:'H:i' }}
+            </li>
+            <li class="list-group-item flex-fill text-white text-center
+                {% if question.answered %} bg-success {% else %} bg-danger {% endif %}">
+                {% if question.answered %} Answered {% else %} Not Answered {% endif %}
+            </li>
+        </ul>
+    {% endfor %}
+
+{% endif %}
+
+{% endblock content %}

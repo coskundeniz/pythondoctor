@@ -1,0 +1,80 @@
+{% extends "pd_main/base.html" %}
+
+{% load static %}
+
+{% comment %}
+
+Gölge kuyusu
+
+gölgeler çıkar kuyudan
+karışırlar üçe beşe
+adımları dolaşır
+takipte izde
+
+ev dediğin kapan
+yuvadır korkulara
+saklanır
+sokaktan sıkılan, bıkan
+
+nice sonra
+sokaklara vuran
+yıllarla kayıplar
+
+gölgedeki kuyudan çıkar
+evdekilerden saklanan
+
+        -- Murathan Mungan
+
+{% endcomment %}
+
+{% block headerextra %}
+    <script src="{% static 'pd_main/js/codemirror-5.47.0/lib/codemirror.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'pd_main/js/codemirror-5.47.0/lib/codemirror.css' %}">
+    <link rel="stylesheet" href="{% static 'pd_main/js/codemirror-5.47.0/theme/monokai.css' %}">
+    <script src="{% static 'pd_main/js/codemirror-5.47.0/mode/python/python.js' %}"></script>
+{% endblock headerextra %}
+
+{% block content %}
+
+    <div class="form-row mt-5 mb-2">
+        <div class="form-group col-12">
+            <textarea class="form-control question-view-textarea" id="question-code-area"
+                rows="{{ question.code_line_count|add:'1' }}" readonly>{{ question.code }}
+            </textarea>
+        </div>
+    </div>
+
+    <div class="form-row mb-2">
+        <div class="form-group col-12">
+            <textarea class="form-control question-view-textarea"
+                rows="{{ question.question_line_count }}" readonly>{{ question.question_text }}
+            </textarea>
+        </div>
+    </div>
+
+    <div class="form-row mb-2">
+        <div class="form-group col-12">
+            <input class="form-control" type="text" value="{{ question.questioner }}" disabled>
+        </div>
+    </div>
+
+    <div class="form-row mb-2 text-center">
+        <div class="form-group col-12">
+            <input class="form-control" type="text"
+                value="{{ question.date_submitted|date:'F j, Y' }} at {{ question.date_submitted|time:'H:i' }}"
+                disabled>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <a class='btn btn-success btn-block'
+                href="{% url 'pd-answer-prepare' answer.pk question.question_id %}">
+                ANSWER QUESTION
+            </a>
+        </div>
+    </div>
+
+    <script src="{% static 'pd_main/js/custom/question_view.js' %}"></script>
+
+{% endblock content %}

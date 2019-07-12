@@ -1,0 +1,64 @@
+{% extends "pd_main/base.html" %}
+
+{% comment %}
+
+HAYAT BÖYLE ZATEN
+
+Bu evin bir köpeği vardı;
+Kıvır kıvırdı, adı Çinçon'du, öldü.
+Bir de kedisi vardı: Maviş,
+Kayboldu.
+Evin kızı gelin oldu,
+Küçük Bey sınıfı geçti.
+Daha böyle acı, tatlı
+Neler oldu bir yıl içinde!
+Oldu ya, olanların hepsi böyle...
+Hayat böyle zaten!..
+
+            -- Orhan Veli
+
+{% endcomment %}
+
+{% block content %}
+    <div class="mt-5 text-center">
+        <p class="custom-text">
+            Python Doctor aims to help people for fixing their python
+            related problems. The main audience is beginner to intermediate
+            level users. Question sent by the user will not be shared, and
+            answer will be exclusive to this user.
+        </p>
+    </div>
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="mt-5 text-secondary">How It Works</h2>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="card-deck mx-auto card-font-size">
+                <div class="card bg-secondary text-white mt-4 mb-3 text-center rounded-lg shadow">
+                    <div class="card-header">1</div>
+                    <div class="card-body p-4">
+                        <p class="card-text font-weight-light">Write your Python code and question</p>
+                    </div>
+                </div>
+
+                <div class="card bg-secondary text-white mt-4 mb-3 text-center rounded-lg shadow">
+                    <div class="card-header">2</div>
+                    <div class="card-body p-4">
+                        <p class="card-text font-weight-light">Submit</p>
+                    </div>
+                </div>
+
+                <div class="card bg-secondary text-white mt-4 mb-3 text-center rounded-lg shadow">
+                    <div class="card-header">3</div>
+                    <div class="card-body p-4">
+                        <p class="card-text font-weight-light">Get the answer to your inbox</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

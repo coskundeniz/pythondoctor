@@ -1,0 +1,111 @@
+{% load static %}
+
+{% comment %}
+
+BAŞLANGIÇ
+
+Doğanın bana verdiği bu ödülden
+Çıldırıp yitmemek için
+İki insan gibi kaldım
+Birbiriyle konuşan iki insan
+
+        -- Edip Cansever
+
+{% endcomment %}
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="{% static 'pd_main/css/main.css' %}">
+
+        {% block headerextra %}{% endblock %}
+
+        {% if title %}
+            <title>Python Doctor :: {{ title }}</title>
+        {% else %}
+            <title>Python Doctor</title>
+        {% endif %}
+    </head>
+    <body>
+
+        <header>
+            <div class="container rounded-bottom p-0 mb-4">
+                <nav class="navbar navbar-expand-md navbar-dark custom-bg-color">
+
+                    <a class="navbar-brand mr-auto p-2 text-white" href="{% url 'pd-home' %}">Python Doctor</a>
+
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse justify-content-end" id="navbarToggle">
+                        <div class="navbar-nav">
+                            <a class="nav-item nav-link" href="{% url 'pd-about' %}">About</a>
+                            <a class="nav-item nav-link" href="{% url 'pd-feedback' %}">Feedback</a>
+                        </div>
+                    </div>
+
+                </nav>
+            </div>
+        </header>
+
+        <main role="main" class="container">
+
+            <div class="row">
+                <div class="col-md-9">
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class='alert alert-{{ message.tags }} alert-dismissible fade show' role="alert">
+                                {{ message }}
+
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+
+                    {% if form.errors %}
+                        {% for error in form.code.errors %}
+                            <div class='alert alert-danger alert-dismissible fade show' role="alert">
+                                {{ error }}
+
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+
+                    {% block content %}{% endblock %}
+                </div>
+
+                <div class="col-md-3 bg-light text-center">
+
+                    <div class="d-md-none"><hr class="horizontal-splitter"></div>
+
+                    {% include "pd_main/python_links.html" %}
+
+                    <a href="https://www.patreon.com/pythondoctor" target="_blank"
+                        class="btn btn-lg mb-2 px-5 text-white supportme-button">Support Me</a>
+                </div>
+            </div>
+        </main>
+
+        <div class="container-fluid mt-5">
+            <hr/>
+            <footer>
+                <p class="text-secondary text-center">&copy; {% now "Y" %} - Python Doctor</p>
+            </footer>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    </body>
+</html>
+

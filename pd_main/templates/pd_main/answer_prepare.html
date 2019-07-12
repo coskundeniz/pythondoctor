@@ -1,0 +1,35 @@
+{% extends "pd_main/answer_base.html" %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% comment %}
+
+Bir testici gördüm, çamur içindeydi,
+Ayağı çarkında, elinde bir testi,
+Testinin başında bir yoksulun ayağı
+Kulpunda bir padişahın kellesi.
+
+Bir testi aldım çarşıdan ucuza,
+Gizli gizli neler anlattı bana,
+Bir şahdım, dedi; altın kupam vardı;
+Şimdi neyim? Testi oldum şaraba.
+
+Günde yüz kere sana aklın der:
+Ne için sen beni gûş etmezsin?
+Aldığın bir nefesi fırsat bil,
+Ot değilsin, yeniden bitmezsin!
+
+                -- Ömer Hayyam
+
+{% endcomment %}
+
+{% block content %}
+
+    <div class="text-center">
+        <h2 class="mt-4 mb-4 text-secondary">Answer</h2>
+    </div>
+
+    {% crispy form %}
+
+{% endblock content %}

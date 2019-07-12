@@ -1,0 +1,75 @@
+body {
+    background: #fafafa;
+}
+
+.custom-bg-color {
+    background-color: #74002b !important;
+}
+
+.navbar a.navbar-brand {
+    font-size: 3rem;
+}
+
+.navbar-nav a.nav-item {
+    font-size: 1.6rem;
+}
+
+.supportme-button {
+    background-color: #e94702;
+}
+
+.custom-text {
+    color: #333;
+    font-size: 1.3rem;
+}
+
+.card-font-size {
+    font-size: 1.2rem;
+}
+
+.horizontal-splitter {
+    border: 1px solid #d2d2d2;
+}
+
+.question-submit-btn {
+    background-color: #912c00 !important; /* does not work !!! */
+}
+
+.ace_editor {
+    font-size: 1.2rem !important;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.ace_gutter {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.django-ace-toolbar {
+    display: none !important;
+}
+
+.question-view-textarea,
+.answer-view-textarea {
+    outline: none;
+    overflow: hidden;
+}
+
+/* CodeMirror style overrides */
+.CodeMirror {
+    font-size: 1.2rem !important;
+    border-radius: 10px;
+}
+
+.CodeMirror-vscrollbar {
+    overflow-y: hidden !important;
+}
+
+.CodeMirror-hscrollbar {
+    overflow-x: hidden !important;
+}
+
+.CodeMirror-linenumber {
+    color: #777 !important;
+}
