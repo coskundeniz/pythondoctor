@@ -121,3 +121,34 @@ class QuestionAnswer(models.Model):
 
     def __str__(self):
         return f'answer: {self.answer.pk}, question={self.question.question_id}'
+
+
+class Category(models.Model):
+
+    post_type = models.CharField(max_length=16)
+
+    def __str__(self):
+        return f'{self.post_type}'
+
+
+class Post(models.Model):
+
+    title = models.CharField(max_length=256, blank=True, null=True)
+    explanation = models.TextField()
+    code = models.TextField()
+    date_created = models.DateTimeField(auto_now_add=True)
+    category = models.ForeignKey(Category, on_delete=models.DO_NOTHING)
+
+    def __str__(self):
+        return f'id: {self.pk}, category: {self.category.post_type}, created: {self.date_created}'
+
+    def get_absolute_url(self):
+        return reverse_lazy('pd-post-detail', kwargs={'pk': self.pk})
+
+    class Meta:
+        ordering = ['-date_created']
+
+
+class PostAdmin(admin.ModelAdmin):
+    list_display = ('pk', 'title', 'category', 'date_created')
+    list_filter = ('category', 'date_created')

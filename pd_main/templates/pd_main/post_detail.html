@@ -1,0 +1,41 @@
+{% extends "pd_main/base.html" %}
+
+{% load static %}
+
+{% comment %}
+
+Yarım somunun var mı? Bir ufak da evin?
+Kimsenin kulu kölesi değil misin?
+Kimsenin sırtından geçindiğin de yok ya?
+Keyfine bak, en hoş dünyası olan sensin.
+
+Bu günden yarınlara senin elin erişmez,
+Yarını düşünüşün boş bir hülya, bunu bil!
+Eğer bir parça aklın başındaysa şu anı
+Ziyan etme, ömrünün kalanı belli değil...
+
+Geçmiş gitmiş bir günü artık ne yâd edersin?
+Gelmeyen yarın için niye feryat edersin?
+Bina kurma geçmişin, gelmemişin üstüne;
+Şu an hoş ol, ömrü neden berbat edersin?...
+
+                        -- Ömer Hayyam
+
+{% endcomment %}
+
+{% block headerextra %}
+    <link rel="stylesheet" type="text/css" href="{% static 'pd_main/css/prism.css' %}">
+    <script src="{% static 'pd_main/js/libs/prism.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+
+    <div class="container-fluid mt-4 mb-4 text-center">
+        <h2 class="text-secondary font-weight-light">Bits of Python Information</h2>
+    </div>
+
+    <div class="mt-4">
+        {% include "pd_main/post.html" with post=post %}
+    </div>
+
+{% endblock content %}

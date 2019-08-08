@@ -1,0 +1,38 @@
+<div class="card mb-4 font-weight-light rounded-lg shadow border-{{ post.category.post_type }}"
+    id="{{ post.pk }}">
+
+    <div class="card-body">
+        {% if post.title %}
+            <h4 class="card-title text-center mb-4">{{ post.title }}</h4>
+        {% endif %}
+
+        <p class="card-text">
+            {{ post.explanation|safe }}
+        </p>
+
+        <pre><code class="language-python">{{ post.code }}</code></pre>
+    </div>
+
+    <div class="card-footer text-muted bg-transparent">
+        <div class="row">
+            <div class="col-3">
+                <div class="list-group list-group-horizontal text-center">
+                    <a href="https://twitter.com/intent/tweet?text={% if post.title %}{{ post.title }}{% endif %}&url={{ request.build_absolute_uri }}{{ post.pk }}&hashtags=pythondoctor,python"
+                        class="list-group-item list-group-item-action border-0 p-0">
+                        <i class="fa fa-twitter"></i></a>
+                    <a href="https://reddit.com/submit?url={{ request.build_absolute_uri }}{{ post.pk }}&title={% if post.title %}{{ post.title }}{% endif %}"
+                        class="list-group-item list-group-item-action border-0 p-0">
+                        <i class="fa fa-reddit"></i></a>
+                    <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ request.build_absolute_uri }}{{ post.pk }}&title={% if post.title %}{{ post.title }}{% endif %}"
+                        class="list-group-item list-group-item-action border-0 p-0">
+                        <i class="fa fa-linkedin"></i></a>
+                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}{{ post.pk }}"
+                        class="list-group-item list-group-item-action border-0 p-0">
+                        <i class="fa fa-facebook"></i></a>
+                </div>
+            </div>
+            <div class="col-9 text-right">{{ post.date_created|date:'j F Y' }}</div>
+        </div>
+    </div>
+
+</div>

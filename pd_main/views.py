@@ -14,7 +14,9 @@ from .models import (
     Question,
     Questioner,
     Answer,
-    QuestionAnswer
+    QuestionAnswer,
+    Post,
+    Category
 )
 from .forms import (
     FeedbackForm,
@@ -175,3 +177,26 @@ class AnswerOutputView(UserPassesTestMixin, SuccessMessageMixin, FormView):
         return self.request.user.is_superuser
 
 
+class BitsOfPythonInformationView(ListView):
+
+    model = Post
+    template_name = 'pd_main/bopi.html'
+    context_object_name = 'posts'
+    paginate_by = 3
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Bits of Python Information'
+
+        return context
+
+
+class PostDetailView(DetailView):
+    model = Post
+
+
+class BitsOfPythonInformationFilterView(BitsOfPythonInformationView):
+
+    def get_queryset(self):
+        filter_category = Category.objects.get(post_type=self.kwargs['category'])
+        return Post.objects.filter(category=filter_category)

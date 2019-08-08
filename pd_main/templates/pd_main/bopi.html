@@ -1,0 +1,80 @@
+{% extends "pd_main/base.html" %}
+
+{% load static %}
+
+{% comment %}
+
+Soğanın Cücüğü
+
+Mudurnu'nun
+Alagöz nahiyesinden
+Durmuş'a
+Büyük ikramiye vurmuş
+Paranı nideceksin demişler
+Bundan böyle demiş
+Her Allah'ın günü
+Soğanın cücüğünü yicem
+cücüğünü
+
+        -- Bedri Rahmi Eyüboğlu
+
+{% endcomment %}
+
+{% block headerextra %}
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'pd_main/css/prism.css' %}">
+    <script src="{% static 'pd_main/js/libs/prism.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+
+    <div class="container-fluid mt-4 mb-4 text-center">
+        <h2 class="text-secondary font-weight-light">Bits of Python Information</h2>
+    </div>
+
+    <div class="list-group list-group-horizontal text-center">
+        <a href="{% url 'pd-bopi-filter' 'info' %}"
+            class="list-group-item list-group-item-action bg-info text-white border-0 p-0">GENERAL INFO
+        </a>
+        <a href="{% url 'pd-bopi-filter' 'success' %}"
+            class="list-group-item list-group-item-action bg-success text-white border-0 p-0">BEST PRACTICE
+        </a>
+        <a href="{% url 'pd-bopi-filter' 'danger' %}"
+            class="list-group-item list-group-item-action bg-danger text-white border-0 p-0">WARNING
+        </a>
+    </div>
+
+    {% for post in posts %}
+        <div class="mt-5">
+            {% include "pd_main/post.html" with post=post %}
+        </div>
+    {% endfor %}
+
+    {% if is_paginated %}
+        <div class="text-center">
+            {% if page_obj.has_previous %}
+                {% if page_obj.paginator.num_pages > 2 %}
+                    <a class="btn btn-outline-secondary mb-4" href="?page=1">First</a>
+                {% endif %}
+                <a class="btn btn-outline-secondary mb-4" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+            {% endif %}
+
+            {% for num in page_obj.paginator.page_range %}
+                {% if page_obj.number == num %}
+                    <a class="btn btn-secondary mb-4" href="?page={{ num }}">{{ num }}</a>
+                {% elif num > page_obj.number|add:'-2' and num < page_obj.number|add:'2'%}
+                    <a class="btn btn-outline-secondary mb-4" href="?page={{ num }}">{{ num }}</a>
+                {% endif %}
+            {% endfor %}
+
+            {% if page_obj.has_next %}
+                <a class="btn btn-outline-secondary mb-4" href="?page={{ page_obj.next_page_number }}">Next</a>
+                {% if page_obj.paginator.num_pages > 2 %}
+                    <a class="btn btn-outline-secondary mb-4" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+                {% endif %}
+            {% endif %}
+        </div>
+    {% endif %}
+
+{% endblock content %}

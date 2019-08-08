@@ -7,7 +7,10 @@ from .views import (
     UserQuestionListView,
     AnswerCreateView,
     AnswerShowView,
-    AnswerOutputView
+    AnswerOutputView,
+    BitsOfPythonInformationView,
+    BitsOfPythonInformationFilterView,
+    PostDetailView
 )
 
 
@@ -15,6 +18,9 @@ urlpatterns = [
     path('', HomeView.as_view(), name='pd-home'),
 
     path('about/', views.about, name='pd-about'),
+    path('bopi/', BitsOfPythonInformationView.as_view(), name='pd-bopi'),
+    path('bopi/filter/<str:category>/', BitsOfPythonInformationFilterView.as_view(), name='pd-bopi-filter'),
+    path('bopi/<int:pk>/', PostDetailView.as_view(), name='pd-post-detail'),
     path('feedback/', FeedbackView.as_view(), name='pd-feedback'),
 
     path('question/<str:pk>/', QuestionView.as_view(), name='pd-question-show'),
