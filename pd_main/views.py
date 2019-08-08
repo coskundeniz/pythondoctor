@@ -187,6 +187,7 @@ class BitsOfPythonInformationView(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Bits of Python Information'
+        context['absolute_url'] = self.request.build_absolute_uri()
 
         return context
 
@@ -194,9 +195,21 @@ class BitsOfPythonInformationView(ListView):
 class PostDetailView(DetailView):
     model = Post
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['absolute_url'] = self.request.build_absolute_uri().rsplit('/', 2)[0] + '/'
+
+        return context
+
 
 class BitsOfPythonInformationFilterView(BitsOfPythonInformationView):
 
     def get_queryset(self):
         filter_category = Category.objects.get(post_type=self.kwargs['category'])
         return Post.objects.filter(category=filter_category)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['absolute_url'] = self.request.build_absolute_uri().split('filter')[0]
+
+        return context

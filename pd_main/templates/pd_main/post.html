@@ -17,16 +17,16 @@
         <div class="row">
             <div class="col-3">
                 <div class="list-group list-group-horizontal text-center">
-                    <a href="https://twitter.com/intent/tweet?text={% if post.title %}{{ post.title }}{% endif %}&url={{ request.build_absolute_uri }}{{ post.pk }}&hashtags=pythondoctor,python"
+                    <a href="https://twitter.com/intent/tweet?text={% if post.title %}{{ post.title }}{% endif %}&url={{ absolute_url }}{{ post.pk }}&hashtags=pythondoctor,python"
                         class="list-group-item list-group-item-action border-0 p-0">
                         <i class="fa fa-twitter"></i></a>
-                    <a href="https://reddit.com/submit?url={{ request.build_absolute_uri }}{{ post.pk }}&title={% if post.title %}{{ post.title }}{% endif %}"
+                    <a href="https://reddit.com/submit?url={{ absolute_url }}{{ post.pk }}&title={% if post.title %}{{ post.title }}{% endif %}"
                         class="list-group-item list-group-item-action border-0 p-0">
                         <i class="fa fa-reddit"></i></a>
-                    <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ request.build_absolute_uri }}{{ post.pk }}&title={% if post.title %}{{ post.title }}{% endif %}"
+                    <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ absolute_url }}{{ post.pk }}&title={% if post.title %}{{ post.title }}{% endif %}"
                         class="list-group-item list-group-item-action border-0 p-0">
                         <i class="fa fa-linkedin"></i></a>
-                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}{{ post.pk }}"
+                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ absolute_url }}{{ post.pk }}"
                         class="list-group-item list-group-item-action border-0 p-0">
                         <i class="fa fa-facebook"></i></a>
                 </div>
