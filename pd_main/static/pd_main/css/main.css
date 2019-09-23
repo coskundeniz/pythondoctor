@@ -3,7 +3,9 @@ body {
 }
 
 .custom-bg-color {
-    background-color: #74002b !important;
+    background: rgb(116,0,43);
+    background: linear-gradient(56deg, rgba(116,0,43,1) 21%,
+                rgba(2,0,36,0.9556197478991597) 58%, rgba(116,0,43,1) 78%);
 }
 
 .navbar a.navbar-brand {
@@ -31,10 +33,6 @@ body {
     border: 1px solid #d2d2d2;
 }
 
-.question-submit-btn {
-    background-color: #912c00 !important; /* does not work !!! */
-}
-
 .ace_editor {
     font-size: 1.2rem !important;
     -webkit-border-radius: 10px;
@@ -54,6 +52,10 @@ body {
 .answer-view-textarea {
     outline: none;
     overflow: hidden;
+}
+
+.typed-string-area {
+    height: 2.2rem;
 }
 
 /* CodeMirror style overrides */
